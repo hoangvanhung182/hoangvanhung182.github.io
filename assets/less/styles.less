@@ -13,6 +13,18 @@
     }
 }
 
+@keyframes moveHorizontal {
+    0% {
+        opacity: 1;
+        margin-left: 0;
+    }
+    
+    100% {
+        opacity: 0;
+        margin-left: -30px;
+    }
+}
+
 .align-center-mixin() {
     position: absolute;
     top: 50%;
@@ -37,7 +49,7 @@ a:not(.button) {
 
 button,
 .button {
-    background: transparent;
+    background: @button-background;
     color: @highlight;
     padding: 15px 30px;
     border-radius: 30px;
@@ -50,7 +62,7 @@ button,
     cursor: pointer;
     
     &:hover {
-        background: @button-background;
+        background: @button-background-hover;
         color: @button-text;
     }
 }
@@ -93,14 +105,14 @@ button,
     
     .main-content {
         padding: 0 15px;
-        max-width: 1280px;
+        max-width: 1165px;
         margin: auto;
     }
     
     .section {
         margin-top: 45px;
         padding: 60px 45px;
-        box-shadow: 2px 2px 5px 0 @tile-background;
+        box-shadow: 2px 2px 5px 0 @block-background;
         line-height: 26px;
     }
     
@@ -118,7 +130,15 @@ button,
     }
 }
 
-.page-about-me {
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.page-about {
     .header {
         .pulser {
             width: 25px;
@@ -169,7 +189,7 @@ button,
             font-size: 45px;
             margin-top: 30px;
             font-weight: 600;
-            color: @main-title;
+            color: @big-title;
         }
     
         .download-cv {
@@ -178,6 +198,28 @@ button,
         
         .send-message {
             margin-left: 10px;
+        }
+        
+        .go-home {
+            position: absolute;
+            top: 30px;
+            left: 45px;
+            font-size: 16px;
+            line-height: 16px;
+            font-weight: 500;
+            margin-left: 30px;
+            
+            .icon-double-angle {
+                animation: moveHorizontal 3s infinite;
+                position: absolute;
+                left: -25px;
+                top: 0;
+            }
+            
+            &,
+            .icon-double-angle {
+                color: @big-title;
+            }
         }
     }
     
@@ -255,15 +297,6 @@ button,
                 margin: 0;
                 width: 100%;
                 color: @white;
-            }
-        }
-    
-        .about-me {
-            flex-wrap: wrap;
-            
-            .overview,
-            .contact {
-                width: 100%;
             }
         }
     
